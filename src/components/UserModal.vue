@@ -11,7 +11,12 @@
       </div>
       
       <div class="flex items-center mb-4">
-        <img :src="user.picture.large" :alt="`${user.name.first} ${user.name.last}`" class="w-20 h-20 rounded-full mr-4">
+        <img 
+          :src="user.picture.large" 
+          :alt="`${user.name.first} ${user.name.last}`" 
+          class="w-20 h-20 rounded-full mr-4 object-cover"
+          @error="$event.target.src = '/src/assets/Avatar.png'"
+        >
         <div>
           <h3 class="text-lg font-semibold">{{ user.name.title }} {{ user.name.first }} {{ user.name.last }}</h3>
           <p class="text-gray-600">{{ user.email }}</p>

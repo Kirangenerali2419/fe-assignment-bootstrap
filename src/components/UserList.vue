@@ -1,16 +1,17 @@
 <template>
   <div class="min-h-screen bg-gray-50">
     <!-- Header -->
-    <header class="bg-white shadow-sm border-b">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header class="bg-white shadow-sm border-b relative">
+      <div class="px-[160px]">
         <div class="flex justify-between items-center h-16">
           <div class="flex items-center">
-            <div class="text-orange-500 font-bold text-xl">KIRATECH</div>
+            <img src="@/assets/Logo.png" alt="KIRATECH" class="h-10 w-auto mr-2">
+            <!-- <div class="text-orange-500 font-bold text-xl">KIRATECH</div> -->
           </div>
           <div class="flex items-center space-x-4">
             <button class="p-2 text-gray-400 hover:text-gray-600">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5-5-5h5v-12h5v12z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5.365V3m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175 0 .593 0 1.292-.538 1.292H5.538C5 18 5 17.301 5 16.708c0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 12 5.365ZM8.733 18c.094.852.306 1.54.944 2.112a3.48 3.48 0 0 0 4.646 0c.638-.572 1.236-1.26 1.33-2.112h-6.92Z"/>
               </svg>
             </button>
             <button class="p-2 text-gray-400 hover:text-gray-600">
@@ -30,42 +31,44 @@
     </header>
 
     <!-- Profile Section -->
-    <div class="bg-gradient-to-r from-cyan-400 to-cyan-500">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="relative" style="background-color: #35bad8;">
+      <div class="px-[160px] pt-8 pb-4">
         <div class="flex items-center">
-          <img src="@/assets/Avatar.png" alt="Profile" class="w-20 h-20 rounded-full border-4 border-white mr-6">
-          <div class="text-white">
-            <h1 class="text-2xl font-semibold">John Doe</h1>
-            <p class="text-cyan-100">Last online: 3 days ago</p>
-          </div>
-          <div class="ml-auto flex space-x-3">
-            <button class="bg-white text-cyan-500 px-4 py-2 rounded-md font-medium hover:bg-gray-50 flex items-center">
-              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-              </svg>
-              Send Message
-            </button>
-            <button class="bg-cyan-600 text-white px-4 py-2 rounded-md font-medium hover:bg-cyan-700 flex items-center">
-              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-              </svg>
-              Add Friend
-            </button>
+          <img src="@/assets/Avatar.png" alt="Profile" class="w-28 h-28 absolute -bottom-12 border border-white mr-2 object-cover">
+          <div class="flex pl-32 pt-[30px] items-end">
+            <div class="text-white py-0">
+              <h1 class="text-3xl font-bold">John Doe</h1>
+              <p class="text-cyan-100 text-[12px]">Last online: 3 days ago</p>
+            </div>
+            <div class="flex gap-[5px] ml-[10px]">
+              <button class="bg-white text-cyan-500 px-4 h-[38px] rounded-md font-medium hover:bg-gray-50 flex items-center text-[12px]">
+                <svg class="w-4 h-4" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
+                  <path  stroke-linecap="round" stroke-linejoin="round" stroke-width="2"  d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
+                </svg>
+                Send Message
+              </button>
+              <button class="border border-white text-white hover:text-cyan-500 px-4 h-[38px] rounded-md font-medium hover:bg-white flex items-center text-[12px]">
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+                Add Friend
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Search Bar -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="px-[160px] py-4 pt-12">
       <div class="flex justify-between items-center mb-4">
         <input
           v-model="searchQuery"
           type="text"
           placeholder="Search users..."
-          class="w-64 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-transparent"
         >
-        <button
+        <!-- <button
           @click="refreshUsers"
           :disabled="loading"
           class="bg-cyan-500 text-white px-4 py-2 rounded-md hover:bg-cyan-600 disabled:opacity-50 flex items-center"
@@ -74,15 +77,15 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
           </svg>
           Refresh
-        </button>
+        </button> -->
       </div>
     </div>
 
     <!-- User Table -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-white shadow rounded-lg overflow-hidden">
-        <table class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gray-50">
+    <div class="px-[160px]">
+      <div class="rounded-lg overflow-hidden">
+        <table class="min-w-full" style="border-spacing: 0 2px;">
+          <thead>
             <tr>
               <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
               <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
@@ -91,12 +94,12 @@
               <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
             </tr>
           </thead>
-          <tbody class="bg-white divide-y divide-gray-200">
+          <tbody>
             <tr
               v-for="user in filteredUsers"
               :key="user.login.uuid"
               @click="selectUser(user)"
-              class="hover:bg-gray-50 cursor-pointer"
+              class="shadow border cursor-pointer hover:border-[#35bad8]"
             >
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {{ formatDate(user.registered.date) }}
