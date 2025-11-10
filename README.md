@@ -5,9 +5,10 @@ A Vue 3 application that displays a list of users fetched from the Random User A
 ## Features
 
 - **User List**: Display users in a clean card-based layout
-- **Search**: Filter users by name or email
-- **Sort**: Sort users by name, email, or age (ascending/descending)
+- **Search**: Filter users by name, email, or country
+- **Sort**: Sort users by date, name, gender, country, or email (ascending/descending)
 - **User Details**: Click on any user to view detailed information in a modal
+- **Pagination**: Navigate through pages of users with server-side pagination
 - **Refresh**: Refresh the user list to get new random users
 - **Responsive Design**: Works on desktop and mobile devices
 
@@ -24,26 +25,21 @@ A Vue 3 application that displays a list of users fetched from the Random User A
 
 1. **Clone the repository**
    ```bash
-   git clone https://bitbucket.org/kiratechnologies/fe-assignment-bootstrap.git
+   git clone https://github.com/Kirangenerali2419/fe-assignment-bootstrap.git
    cd fe-assignment-bootstrap
    ```
 
-2. **Switch to the feature branch**
-   ```bash
-   git checkout feature/userProfile
-   ```
-
-3. **Install dependencies**
+2. **Install dependencies**
    ```bash
    npm install
    ```
 
-4. **Run the development server**
+3. **Run the development server**
    ```bash
    npm run dev
    ```
 
-5. **Open your browser**
+4. **Open your browser**
    Navigate to `http://localhost:5173` to view the application
 
 ## Project Structure
@@ -67,9 +63,9 @@ src/
 ## API Integration
 
 The application fetches data from the Random User API:
-- Endpoint: `https://randomuser.me/api/?results=20`
+- Endpoint: `https://randomuser.me/api/?page={page}&results=20&seed=abc`
 - Returns 20 random users per request
-- Supports pagination (though not implemented in this version)
+- Supports server-side pagination with consistent results across pages
 
 ## Features Implemented
 
@@ -77,8 +73,9 @@ The application fetches data from the Random User API:
 - [x] Display list of users
 - [x] User details modal/popup
 - [x] Refresh functionality
-- [x] Search functionality (filter by name/email)
-- [x] Sort functionality (by name, email, age)
+- [x] Search functionality (filter by name/email/country)
+- [x] Sort functionality (by date, name, gender, country, email)
+- [x] Server-side pagination
 
 ### ✅ Technical Requirements
 - [x] Vue 3 with TypeScript
