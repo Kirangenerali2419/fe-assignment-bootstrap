@@ -87,11 +87,11 @@
         <table class="min-w-full" style="border-spacing: 0 2px;">
           <thead>
             <tr>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider">Date</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider">Name</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider">Gender</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider">Country</th>
-              <th class="px-6 py-3 text-right text-xs font-medium text-gray-400 tracking-wider">Email</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('date')">Date</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('name')">Name</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('gender')">Gender</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('country')">Country</th>
+              <th class="px-6 py-3 text-right text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('email')">Email</th>
             </tr>
           </thead>
           <tbody>
@@ -181,9 +181,47 @@ import type { User } from '@/stores/users'
 
 const usersStore = useUsersStore()
 const selectedUser = ref<User | null>(null)
+const sortField = ref<string>('')
+const sortDirection = ref<'asc' | 'desc'>('asc')
 
 const loading = computed(() => usersStore.loading)
-const filteredUsers = computed(() => usersStore.filteredUsers)
+const filteredUsers = computed(() => {
+  const users = usersStore.filteredUsers
+  if (!sortField.value) return users
+  
+  return [...users].sort((a, b) => {
+    let aVal, bVal
+    
+    switch (sortField.value) {
+      case 'date':
+        aVal = new Date(a.registered.date).getTime()
+        bVal = new Date(b.registered.date).getTime()
+        break
+      case 'name':
+        aVal = `${a.name.first} ${a.name.last}`.toLowerCase()
+        bVal = `${b.name.first} ${b.name.last}`.toLowerCase()
+        break
+      case 'gender':
+        aVal = a.gender.toLowerCase()
+        bVal = b.gender.toLowerCase()
+        break
+      case 'country':
+        aVal = a.location.country.toLowerCase()
+        bVal = b.location.country.toLowerCase()
+        break
+      case 'email':
+        aVal = a.email.toLowerCase()
+        bVal = b.email.toLowerCase()
+        break
+      default:
+        return 0
+    }
+    
+    if (aVal < bVal) return sortDirection.value === 'asc' ? -1 : 1
+    if (aVal > bVal) return sortDirection.value === 'asc' ? 1 : -1
+    return 0
+  })
+})
 const currentPage = computed(() => usersStore.currentPage)
 
 const searchQuery = computed({
@@ -193,6 +231,15 @@ const searchQuery = computed({
 
 const selectUser = (user: User) => {
   selectedUser.value = user
+}
+
+const sortBy = (field: string) => {
+  if (sortField.value === field) {
+    sortDirection.value = sortDirection.value === 'asc' ? 'desc' : 'asc'
+  } else {
+    sortField.value = field
+    sortDirection.value = 'asc'
+  }
 }
 
 const refreshUsers = () => {
