@@ -1,23 +1,44 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div class="min-h-screen bg-gray-50">
+    <header class="bg-white shadow-sm">
+      <div class="max-w-6xl mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <h1 class="text-2xl font-bold text-gray-900">User Directory App</h1>
+          <nav class="flex space-x-6">
+            <RouterLink 
+              to="/" 
+              class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md transition-colors"
+              active-class="text-blue-600 font-medium"
+            >
+              Home
+            </RouterLink>
+            <RouterLink 
+              to="/users" 
+              class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md transition-colors"
+              active-class="text-blue-600 font-medium"
+            >
+              Users
+            </RouterLink>
+            <RouterLink 
+              to="/about" 
+              class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md transition-colors"
+              active-class="text-blue-600 font-medium"
+            >
+              About
+            </RouterLink>
+          </nav>
+        </div>
+      </div>
+    </header>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    <main>
+      <RouterView />
+    </main>
+  </div>
 </template>
 
 <style scoped>

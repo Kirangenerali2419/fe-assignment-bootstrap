@@ -1,67 +1,120 @@
-# front-end-assignment-kiratech
+# User Directory Application
 
-Bootstrapped working project for front end assignment using Vue3 Bootstrapper Tool. The packages include:
+A Vue 3 application that displays a list of users fetched from the Random User API with search, sort, and detailed view functionality.
 
-- Vue 3
-- Pinia
-- ESLint
-- Prettier
-- Axios
-- FontAwesome
-- TailwindCSS
+## Features
 
-## Recommended IDE Setup
+- **User List**: Display users in a clean card-based layout
+- **Search**: Filter users by name or email
+- **Sort**: Sort users by name, email, or age (ascending/descending)
+- **User Details**: Click on any user to view detailed information in a modal
+- **Refresh**: Refresh the user list to get new random users
+- **Responsive Design**: Works on desktop and mobile devices
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Technology Stack
 
-## Type Support for `.vue` Imports in TS
+- Vue 3 with Composition API
+- TypeScript
+- Pinia for state management
+- Tailwind CSS for styling
+- Axios for API calls
+- Vite for build tooling
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+## Setup Instructions
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+1. **Clone the repository**
+   ```bash
+   git clone https://bitbucket.org/kiratechnologies/fe-assignment-bootstrap.git
+   cd fe-assignment-bootstrap
+   ```
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+2. **Switch to the feature branch**
+   ```bash
+   git checkout feature/userProfile
+   ```
 
-## Customize configuration
+3. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
 
-## Project Setup
+5. **Open your browser**
+   Navigate to `http://localhost:5173` to view the application
 
-```sh
-npm install
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── UserCard.vue      # Individual user card component
+│   ├── UserModal.vue     # User details modal
+│   └── SearchBar.vue     # Search and sort controls
+├── stores/
+│   └── users.ts          # Pinia store for user management
+├── types/
+│   └── User.ts           # TypeScript interfaces
+├── views/
+│   ├── HomeView.vue      # Landing page
+│   └── UsersView.vue     # Main users page
+└── App.vue               # Root component
 ```
 
-### Compile and Hot-Reload for Development
+## API Integration
 
-```sh
-npm run dev
-```
+The application fetches data from the Random User API:
+- Endpoint: `https://randomuser.me/api/?results=20`
+- Returns 20 random users per request
+- Supports pagination (though not implemented in this version)
 
-### Type-Check, Compile and Minify for Production
+## Features Implemented
 
-```sh
+### ✅ Required Features
+- [x] Display list of users
+- [x] User details modal/popup
+- [x] Refresh functionality
+- [x] Search functionality (filter by name/email)
+- [x] Sort functionality (by name, email, age)
+
+### ✅ Technical Requirements
+- [x] Vue 3 with TypeScript
+- [x] Responsive design
+- [x] Clean, maintainable code structure
+- [x] State management with Pinia
+
+## Usage
+
+1. **View Users**: Navigate to the Users page to see the list of users
+2. **Search**: Use the search bar to filter users by name or email
+3. **Sort**: Use the dropdown to sort by name, email, or age. Click the arrow button to toggle between ascending/descending order
+4. **View Details**: Click on any user card to open a detailed view modal
+5. **Refresh**: Click the refresh button to load new random users
+
+## Build for Production
+
+```bash
 npm run build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+The built files will be in the `dist/` directory.
 
-```sh
+## Testing
+
+```bash
+# Unit tests
 npm run test:unit
+
+# E2E tests
+npm run test:e2e
 ```
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+## Development Notes
 
-```sh
-npm run build
-npm run test:e2e # or `npm run test:e2e:ci` for headless testing
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- The application uses the Composition API for better TypeScript integration
+- State management is handled by Pinia for reactive data flow
+- Tailwind CSS provides utility-first styling
+- The design follows modern UI/UX principles with clean layouts and smooth interactions
