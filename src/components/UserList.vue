@@ -43,7 +43,7 @@
             <div class="flex gap-[5px] ml-[10px]">
               <button class="bg-white text-cyan-500 px-4 h-[38px] rounded-md font-medium border hover:border-white hover:bg-transparent hover:text-white flex items-center text-[12px]">
                 <svg class="w-4 h-4" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
-                  <path  stroke-linecap="round" stroke-linejoin="round" stroke-width="2"  d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
                 </svg>
                 Send Message
               </button>
@@ -123,8 +123,8 @@
                   </svg>
                 </div>
               </th>
-              <th class="px-6 py-3 text-right text-[10px] font-extrabold text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('email')">
-                <div class="flex items-center justify-end">
+              <th class="px-6 py-3 text-left text-[10px] font-extrabold text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('email')">
+                <div class="flex items-center">
                   Email
                   <svg v-if="sortField === 'email'" class="w-2 h-2 ml-1" fill="currentColor" viewBox="0 0 20 20">
                     <path v-if="sortDirection === 'asc'" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
@@ -209,7 +209,7 @@
     </div>
 
     <!-- User Modal -->
-    <UserModal :user="selectedUser" @close="selectedUser = null" />
+    <UserModal :user="selectedUser" :is-open="!!selectedUser" @close="selectedUser = null" />
   </div>
 </template>
 

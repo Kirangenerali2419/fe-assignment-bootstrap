@@ -16,12 +16,24 @@ export interface User {
     postcode: string | number
   }
   email: string
+  login: {
+    uuid: string
+    username: string
+  }
   dob: {
+    date: string
+    age: number
+  }
+  registered: {
     date: string
     age: number
   }
   phone: string
   cell: string
+  id: {
+    name: string
+    value: string
+  }
   picture: {
     large: string
     medium: string
