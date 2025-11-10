@@ -87,11 +87,11 @@
         <table class="min-w-full" style="border-spacing: 0 2px;">
           <thead>
             <tr>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Gender</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider">Date</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider">Name</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider">Gender</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider">Country</th>
+              <th class="px-6 py-3 text-right text-xs font-medium text-gray-400 tracking-wider">Email</th>
             </tr>
           </thead>
           <tbody>
@@ -101,24 +101,24 @@
               @click="selectUser(user)"
               class="shadow border cursor-pointer hover:border-[#35bad8]"
             >
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              <td class="px-6 py-3 whitespace-nowrap text-xs text-gray-400">
                 {{ formatDate(user.registered.date) }}
               </td>
-              <td class="px-6 py-4 whitespace-nowrap">
+              <td class="px-6 py-3 whitespace-nowrap">
                 <div class="flex items-center">
                   <img :src="user.picture.thumbnail" :alt="`${user.name.first} ${user.name.last}`" class="w-8 h-8 rounded-full mr-3">
-                  <div class="text-sm font-medium text-gray-900">
+                  <div class="text-xs font-medium text-gray-900">
                     {{ user.name.first }} {{ user.name.last }}
                   </div>
                 </div>
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 capitalize">
+              <td class="px-6 py-3 whitespace-nowrap text-xs text-gray-400 capitalize">
                 {{ user.gender }}
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              <td class="px-6 py-3 whitespace-nowrap text-xs text-gray-400">
                 {{ user.location.country }}
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              <td class="px-6 py-3 whitespace-nowrap text-xs text-gray-400">
                 {{ user.email }}
               </td>
             </tr>
