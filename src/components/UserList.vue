@@ -41,7 +41,7 @@
               <p class="text-cyan-100 text-[12px]">Last online: 3 days ago</p>
             </div>
             <div class="flex gap-[5px] ml-[10px]">
-              <button class="bg-white text-cyan-500 px-4 h-[38px] rounded-md font-medium hover:bg-gray-50 flex items-center text-[12px]">
+              <button class="bg-white text-cyan-500 px-4 h-[38px] rounded-md font-medium border hover:border-white hover:bg-transparent hover:text-white flex items-center text-[12px]">
                 <svg class="w-4 h-4" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
                   <path  stroke-linecap="round" stroke-linejoin="round" stroke-width="2"  d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
                 </svg>
@@ -87,7 +87,7 @@
         <table class="min-w-full" style="border-spacing: 0 2px;">
           <thead>
             <tr>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('date')">
+              <th class="px-6 py-3 text-left text-[10px] font-extrabold text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('date')">
                 <div class="flex items-center">
                   Date
                   <svg v-if="sortField === 'date'" class="w-2 h-2 ml-1" fill="currentColor" viewBox="0 0 20 20">
@@ -96,7 +96,7 @@
                   </svg>
                 </div>
               </th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('name')">
+              <th class="px-6 py-3 text-left text-[10px] font-extrabold text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('name')">
                 <div class="flex items-center">
                   Name
                   <svg v-if="sortField === 'name'" class="w-2 h-2 ml-1" fill="currentColor" viewBox="0 0 20 20">
@@ -105,7 +105,7 @@
                   </svg>
                 </div>
               </th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('gender')">
+              <th class="px-6 py-3 text-left text-[10px] font-extrabold text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('gender')">
                 <div class="flex items-center">
                   Gender
                   <svg v-if="sortField === 'gender'" class="w-2 h-2 ml-1" fill="currentColor" viewBox="0 0 20 20">
@@ -114,7 +114,7 @@
                   </svg>
                 </div>
               </th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('country')">
+              <th class="px-6 py-3 text-left text-[10px] font-extrabold text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('country')">
                 <div class="flex items-center">
                   Country
                   <svg v-if="sortField === 'country'" class="w-2 h-2 ml-1" fill="currentColor" viewBox="0 0 20 20">
@@ -123,7 +123,7 @@
                   </svg>
                 </div>
               </th>
-              <th class="px-6 py-3 text-right text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('email')">
+              <th class="px-6 py-3 text-right text-[10px] font-extrabold text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('email')">
                 <div class="flex items-center justify-end">
                   Email
                   <svg v-if="sortField === 'email'" class="w-2 h-2 ml-1" fill="currentColor" viewBox="0 0 20 20">
@@ -139,7 +139,7 @@
               v-for="user in filteredUsers"
               :key="user.login.uuid"
               @click="selectUser(user)"
-              class="shadow border cursor-pointer hover:border-[#35bad8]"
+              class="shadow border cursor-pointer hover:border-[1.5px] hover:border-[#35bad8] rounded"
             >
               <td class="px-6 py-3 whitespace-nowrap text-xs text-gray-400">
                 {{ formatDate(user.registered.date) }}
