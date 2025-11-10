@@ -1,74 +1,79 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
-import type { User, ApiResponse } from '@/types/User'
+
+export interface User {
+  gender: string
+  name: {
+    title: string
+    first: string
+    last: string
+  }
+  location: {
+    street: {
+      number: number
+      name: string
+    }
+    city: string
+    state: string
+    country: string
+    postcode: string | number
+  }
+  email: string
+  login: {
+    uuid: string
+    username: string
+  }
+  dob: {
+    date: string
+    age: number
+  }
+  registered: {
+    date: string
+    age: number
+  }
+  phone: string
+  cell: string
+  id: {
+    name: string
+    value: string
+  }
+  picture: {
+    large: string
+    medium: string
+    thumbnail: string
+  }
+  nat: string
+}
 
 export const useUsersStore = defineStore('users', {
   state: () => ({
     users: [] as User[],
     loading: false,
-    error: null as string | null,
     currentPage: 1,
     totalPages: 1,
     searchQuery: '',
-    sortBy: 'name' as 'name' | 'email' | 'age',
-    sortOrder: 'asc' as 'asc' | 'desc'
+    selectedUser: null as User | null
   }),
 
   getters: {
     filteredUsers: (state) => {
-      let filtered = [...state.users]
-      
-      if (state.searchQuery) {
-        filtered = filtered.filter(user => 
-          `${user.name.first} ${user.name.last}`.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
-          user.email.toLowerCase().includes(state.searchQuery.toLowerCase())
-        )
-      }
-
-      filtered.sort((a, b) => {
-        let aValue: string | number
-        let bValue: string | number
-
-        switch (state.sortBy) {
-          case 'name':
-            aValue = `${a.name.first} ${a.name.last}`
-            bValue = `${b.name.first} ${b.name.last}`
-            break
-          case 'email':
-            aValue = a.email
-            bValue = b.email
-            break
-          case 'age':
-            aValue = a.dob.age
-            bValue = b.dob.age
-            break
-          default:
-            aValue = `${a.name.first} ${a.name.last}`
-            bValue = `${b.name.first} ${b.name.last}`
-        }
-
-        if (state.sortOrder === 'asc') {
-          return aValue > bValue ? 1 : -1
-        } else {
-          return aValue < bValue ? 1 : -1
-        }
-      })
-
-      return filtered
+      if (!state.searchQuery) return state.users
+      return state.users.filter(user => 
+        `${user.name.first} ${user.name.last}`.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
+        user.email.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
+        user.location.country.toLowerCase().includes(state.searchQuery.toLowerCase())
+      )
     }
   },
 
   actions: {
-    async fetchUsers(page: number = 1) {
+    async fetchUsers(page = 1) {
       this.loading = true
-      this.error = null
-      
       try {
-        const response = await axios.get<ApiResponse>(`https://randomuser.me/api/?page=${page}&results=20`)
+        const response = await axios.get(`https://randomuser.me/api/?page=${page}&results=20`)
         this.users = response.data.results
         this.currentPage = page
       } catch (error) {
-        this.error = 'Failed to fetch users'
         console.error('Error fetching users:', error)
       } finally {
         this.loading = false
@@ -79,9 +84,8 @@ export const useUsersStore = defineStore('users', {
       this.searchQuery = query
     },
 
-    setSorting(sortBy: 'name' | 'email' | 'age', sortOrder: 'asc' | 'desc') {
-      this.sortBy = sortBy
-      this.sortOrder = sortOrder
+    setSelectedUser(user: User | null) {
+      this.selectedUser = user
     }
   }
 })
