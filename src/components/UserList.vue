@@ -87,11 +87,51 @@
         <table class="min-w-full" style="border-spacing: 0 2px;">
           <thead>
             <tr>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('date')">Date</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('name')">Name</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('gender')">Gender</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('country')">Country</th>
-              <th class="px-6 py-3 text-right text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('email')">Email</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('date')">
+                <div class="flex items-center">
+                  Date
+                  <svg v-if="sortField === 'date'" class="w-2 h-2 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path v-if="sortDirection === 'asc'" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                    <path v-else d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"/>
+                  </svg>
+                </div>
+              </th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('name')">
+                <div class="flex items-center">
+                  Name
+                  <svg v-if="sortField === 'name'" class="w-2 h-2 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path v-if="sortDirection === 'asc'" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                    <path v-else d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"/>
+                  </svg>
+                </div>
+              </th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('gender')">
+                <div class="flex items-center">
+                  Gender
+                  <svg v-if="sortField === 'gender'" class="w-2 h-2 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path v-if="sortDirection === 'asc'" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                    <path v-else d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"/>
+                  </svg>
+                </div>
+              </th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('country')">
+                <div class="flex items-center">
+                  Country
+                  <svg v-if="sortField === 'country'" class="w-2 h-2 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path v-if="sortDirection === 'asc'" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                    <path v-else d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"/>
+                  </svg>
+                </div>
+              </th>
+              <th class="px-6 py-3 text-right text-xs font-medium text-gray-400 tracking-wider cursor-pointer hover:text-gray-600" @click="sortBy('email')">
+                <div class="flex items-center justify-end">
+                  Email
+                  <svg v-if="sortField === 'email'" class="w-2 h-2 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path v-if="sortDirection === 'asc'" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                    <path v-else d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"/>
+                  </svg>
+                </div>
+              </th>
             </tr>
           </thead>
           <tbody>
