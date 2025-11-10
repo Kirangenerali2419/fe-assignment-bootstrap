@@ -50,7 +50,6 @@ export const useUsersStore = defineStore('users', {
     users: [] as User[],
     loading: false,
     currentPage: 1,
-    totalPages: 1,
     searchQuery: '',
     selectedUser: null as User | null
   }),
@@ -70,7 +69,7 @@ export const useUsersStore = defineStore('users', {
     async fetchUsers(page = 1) {
       this.loading = true
       try {
-        const response = await axios.get(`https://randomuser.me/api/?page=${page}&results=20`)
+        const response = await axios.get(`https://randomuser.me/api/?page=${page}&results=20&seed=abc`)
         this.users = response.data.results
         this.currentPage = page
       } catch (error) {
